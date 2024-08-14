@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Employee Dashboard
+        </title>
+
+        <h1> SUN TECHNOLOGIES</h1>
+    </head>
+<body>
+    <div class="container">
+        <h2>Capture Time</h2>
+        <form method="POST">
+            <button type="submit">Capture Current Time</button>
+        </form>
+        <h2>Exit Time</h2>
+        <form method="POST">
+            <button type="submit">Capture EXIT Time</button>
+        </form>
+        <a href="{{ url_for('entries') }}">View All Entries</a>
+
+
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Time Entries</title>
+</head>
+<body>
+    <div class="container">
+        <h2>All Captured Times</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Capture Time</th>
+                <th>Exit time</th>
+            </tr>
+            {% for entry in entries %}
+            <tr>
+                <td>{{ entry[0] }}</td>
+                <td>{{ entry[1] }}</td>
+                <td>{{ entry[2] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a href="{{ url_for('index') }}">Back to Capture Page</a>
+    </div>
+</body>
+</html>
