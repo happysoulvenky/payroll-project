@@ -1,27 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>
-            Employee Dashboard
-        </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Employee Dashboard</title>
+        <style>
+            /* Hide the calendar by default */
+            #calendar-container {
+                display: none;
+                margin-top: 20px;
+            }
 
-        <h1> SUN TECHNOLOGIES</h1>
+            table {
+                width: 25%;
+                border-collapse: collapse;
+            }
+
+            th, td {
+                border: 1px solid black;
+                padding: 5px;
+                text-align: center;
+            }
+
+            th {
+                background-color: black;
+                color: white;
+            }
+
+            /* Highlight today's date */
+            .today {
+                background-color: yellow;
+                font-weight: bold;
+            }
+        </style>
     </head>
 <body>
+    <h1>SUN TECHNOLOGIES</h1>
     <div class="container">
         <h2>Capture Time</h2>
-        <form method="POST">
-            <button type="submit">Capture Current Time</button>
+        <form method="POST" action = "{{ url_for('mark_start') }}">
+            <button type="submit" >Capture Current Time</button>
         </form>
         <h2>Exit Time</h2>
-        <form method="POST">
+        <form method="POST" action = "{{url_for('mark_end')}}">
             <button type="submit">Capture EXIT Time</button>
         </form>
         <a href="{{ url_for('entries') }}">View All Entries</a>
-
-
     </div>
 
-    
+    <!-- Button to show the calendar -->
+    <button onclick="toggleCalendar()">Show Calendar</button>
+
+    <!-- Calendar container -->
+    <div id="calendar-container">
+        <h2>Calendar for {{ datetime.now().strftime('%B %Y') }}</h2>
+        <div>
+            {{ calendar|safe }}
+        </div>
+    </div>
+
+    <script>
+        function toggleCalendar() {
+            var calendarContainer = document.getElementById('calendar-container');
+            if (calendarContainer.style.display === 'none' || calendarContainer.style.display === '') {
+                calendarContainer.style.display = 'block';
+            } else {
+                calendarContainer.style.display = 'block';
+            }
+        }
+    </script>
 </body>
 </html>

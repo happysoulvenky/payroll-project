@@ -26,6 +26,7 @@ from threading import Thread
 import time
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
+import calendar
 
 
 
@@ -103,31 +104,76 @@ def employeesignup():
     return render_template('employee signup.html')
 
 
-@app.route('/time', methods=['GET', 'POST'])
-def index():
-    if request.method == 'POST':
-        # Capture entry time
-        capture_time = datetime.now()
-        
-        # Insert capture time into the database
-        cursor = mysql.connection.cursor()
-        cursor.execute('INSERT INTO time_entries (capture_time) VALUES (%s)', (capture_time,))
-        mysql.connection.commit()
-        
-        # Retrieve the last inserted id
-        entry_id = cursor.lastrowid
-        
-        # Capture exit time
-        exit_time = datetime.now()
-        
-        # Update the same entry with exit time
-        cursor.execute('UPDATE time_entries SET exit_time = %s WHERE id = %s', (exit_time, entry_id))
-        mysql.connection.commit()
-        cursor.close()
+@app.route('/mark_start', methods=['POST'])
+def mark_start():
+    employee_id = request.form['employee_id']
+    current_date = datetime.now().date()
+    start_time = datetime.now().time()
 
-        return redirect(url_for('index'))
+    cursor = mysql.connection.cursor()
 
-    return render_template('dashboard.html')
+    # Check if there is an existing record for this employee today
+    cursor.execute("SELECT * FROM attendance WHERE employee_id = %s AND date = %s", (employee_id, current_date))
+    record = cursor.fetchone()
+
+    if record:
+        # Update start_time if the record exists
+        cursor.execute("UPDATE attendance SET start_time = %s WHERE employee_id = %s AND date = %s", (start_time, employee_id, current_date))
+    else:
+        # Insert new record if it doesn't exist
+        cursor.execute("INSERT INTO attendance (employee_id, date, start_time) VALUES (%s, %s, %s)", (employee_id, current_date, start_time))
+
+    mysql.connection.commit()
+    cursor.close()
+    return redirect(url_for('some_view_function'))
+
+
+@app.route('/mark_end', methods=['POST'])
+def mark_end():
+    employee_id = request.form['employee_id']
+    current_date = datetime.now().date()
+    end_time = datetime.now().time()
+
+    cursor = mysql.connection.cursor()
+
+    # Retrieve the start time to calculate hours worked
+    cursor.execute("SELECT start_time FROM attendance WHERE employee_id = %s AND date = %s", (employee_id, current_date))
+    record = cursor.fetchone()
+
+    if record and record['start_time']:
+        start_time = record['start_time']
+        hours_worked = (datetime.combine(current_date, end_time) - datetime.combine(current_date, start_time)).total_seconds() / 3600
+
+        # Update the end_time and hours_worked
+        cursor.execute("UPDATE attendance SET end_time = %s, hours_worked = %s WHERE employee_id = %s AND date = %s", (end_time, hours_worked, employee_id, current_date))
+
+    mysql.connection.commit()
+    cursor.close()
+    return redirect(url_for('some_view_function'))
+
+
+    year = datetime.now().year
+    month = datetime.now().month
+    today = datetime.now().day
+
+    # Custom calendar class to highlight today's date
+    class HighlightedHTMLCalendar(calendar.HTMLCalendar):
+        def formatday(self, day, weekday):
+            if day == today:
+                return f'<td class="today">{day}</td>'
+            else:
+                return f'<td>{day}</td>' if day != 0 else '<td></td>'
+
+        def formatmonth(self, theyear, themonth, withyear=True):
+            return super().formatmonth(theyear, themonth, withyear)
+
+    cal = HighlightedHTMLCalendar(calendar.SUNDAY)
+    html_calendar = cal.formatmonth(year, month)
+
+        
+
+
+    return render_template('dashboard.html',calendar=html_calendar,datetime=datetime)
 
 
 @app.route('/entries')
