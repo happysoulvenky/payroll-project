@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<title>
+    Add employee Detials
+</title>
+<head>
+    <link rel="stylesheet" type ="text/css" href="{{url_for('static' ,filename='style1.css')}}">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mt-5">
+                    <div class="card-header">
+                        <h2>Payment Allocation</h2>
+                    </div>
+                    <div class="card-body">
+                    <form method="post" action="">
+                        <div class="form-group">
+                            <li>
+                                <label for="employee_id">Employee id</label>
+                                <input type="number" class="form-control" id="employee_id" name="employee_id" required>
+                                <label for = "basic_pay">Basic Pay</label>
+                                <input type = "number" class = "form-control" id = "basic_pay" name = "basic_pay" required>
+                                <label for = "house_allowance">House Allowance</label>
+                                <input type = "number" class = "form-control" id = "house_allowance" name = "house_allowance" required>
+                                <label for = "medical_allowance">Medical Allowance</label>
+                                <input type = "number" class = "form-control" id = "medical_allowance" name = "medical_allowance" required>
+                                <label for = "special_allowance">Special Allowance</label>
+                                <input type = "number" class = "form-control" id = "special_allowance" name = "special_allowance" required>
+                                <label for = "bonus">Bonus</label>
+                                <input type = "number" class = "form-control" id = "bonus" name = "bonus" >
+                            </li>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">submit</button>
+                    </form>
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</body>
+</html>
+
+

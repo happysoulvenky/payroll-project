@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<title> Welocome HR</title>
+<h1></h1>
+<body>
+<div>
+    <li>
+            <button class="button">
+            <a href="">Employee Attendance</a>
+            </button> 
+            <button class="button">
+            <a href="payslip">Payslip</a>
+            </button> 
+            <button class="button">
+                <a href="add_employee">Add employee</a>
+            </button> 
+             <!-- Button to Show Employee Data -->
+    <form method="POST" action="" class="mt-3">
+        <button type="onclick" name="show_employees" class="btn btn-success">Show All Employees</button>
+    </form>
+
+    <!-- Display Employee Data in a Table -->
+    {% if employees %}
+    <h2 class="mt-5">Employee List</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Employee ID</th>
+                <th>Job Title</th>
+                <th>Department</th>
+                <th>Date of Joining</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr>
+                <td>{{ employee.id }}</td>
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.employee_id }}</td>
+                <td>{{ employee.job_title }}</td>
+                <td>{{ employee.department }}</td>
+                <td>{{ employee.date_of_joining }}</td>
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.phone }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+                
+
+
+    </li>
+</div>
+</body>
+
+
+
+
+</html>

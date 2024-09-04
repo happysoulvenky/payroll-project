@@ -1,0 +1,148 @@
+/* Stylesheet for SUN TECHNOLOGIES */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.navbar nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.navbar h1 {
+    margin: 0;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+}
+
+.navbar ul li {
+    display: inline;
+    color: white;
+}
+
+.navbar ul li:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.searchbar {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.searchbar input {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+h2, h3, h4 {
+    text-align: center;
+    color: #333;
+}
+
+.two h4 {
+    margin-top: 40px;
+    color: #555;
+}
+
+p {
+    text-align: center;
+    margin: 0 20px;
+    line-height: 1.6;
+    color: #666;
+}
+
+.form {
+    background-color: #fff;
+    padding: 20px;
+    margin: 30px auto;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.form h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form input[type="ID"], 
+.form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form .button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.form .button a {
+    color: white;
+    text-decoration: none;
+}
+
+.form .button:hover {
+    background-color: #555;
+}
+
+.form .link {
+    margin-top: 10px;
+    color: #777;
+}
+
+.icons {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.icons h3 {
+    color: #333;
+}
+
+.icons p {
+    color: #555;
+    margin: 20px;
+}
+
+.icons a {
+    margin: 0 10px;
+    color: #333;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.icons a:hover {
+    color: #007bff;
+}

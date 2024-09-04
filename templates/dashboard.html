@@ -39,11 +39,11 @@
     <div class="container">
         <h2>Capture Time</h2>
         <form method="POST" action = "{{ url_for('mark_start') }}">
-            <button type="submit" >Capture Current Time</button>
+            <button type="submit" >Capture Strat_Time</button>
         </form>
         <h2>Exit Time</h2>
         <form method="POST" action = "{{url_for('mark_end')}}">
-            <button type="submit">Capture EXIT Time</button>
+            <button type="submit">Capture End_Time</button>
         </form>
         <a href="{{ url_for('entries') }}">View All Entries</a>
     </div>

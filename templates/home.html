@@ -1,256 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUN TECHNOLOGIES</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .signup-form {
-            max-width: 300px;
-            margin: 0 auto;
-        }
-
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-
-        label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        input {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            margin-bottom: 15px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        input[type="submit"] {
-            background-color: #4caf50;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
-        .main {
-            width: 100%;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            background-color: #333;
-        }
-
-        .icon h2 {
-            color: #fff;
-        }
-
-        .menu ul {
-            list-style: none;
-            display: flex;
-        }
-
-        .menu ul li {
-            margin: 0 15px;
-        }
-
-        .menu ul li a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 18px;
-        }
-
-        .search {
-            display: flex;
-        }
-
-        .srch {
-            padding: 5px;
-            border: none;
-            border-radius: 4px;
-        }
-
-        .btn {
-            padding: 5px 10px;
-            background-color: #4caf50;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            margin-left: 10px;
-            cursor: pointer;
-        }
-
-        .content {
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        .content h1 {
-            font-size: 48px;
-            color: #333;
-        }
-
-        .content h1 span {
-            color: #4caf50;
-        }
-
-        .par {
-            font-size: 18px;
-            color: #666;
-            line-height: 1.6;
-            margin-top: 20px;
-        }
-
-        .cn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #4caf50;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
-        }
-
-        .form {
-            margin-top: 30px;
-        }
-
-        .form h2 {
-            font-size: 24px;
-            color: #333;
-        }
-
-        .form .btnn {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: #4caf50;
-            color: #fff;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 4px;
-            margin-top: 10px;
-        }
-
-        .form .link {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-        }
-
-        .form .link a {
-            text-decoration: none;
-            color: #4caf50;
-        }
-
-        .form .liw {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 14px;
-            color: #666;
-        }
-
-        .icons {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .icons a {
-            color: #4caf50;
-            font-size: 24px;
-            margin: 0 10px;
-            text-decoration: none;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="main">
+<html>
+    <head>
+        <title>SUN TECHNOLOGIES</title>
+        <link rel="stylesheet" type ="text/css" href="{{url_for('static' ,filename='style.css')}}">
+        <body>
         <div class="navbar">
-            <div class="icon">
-                <h2 class="logo">SUN TECHNOLOGIES</h2>
-            </div>
-
-            <div class="menu">
+            <nav>
+                <h1>SUN TECHNOLOGIES</h1>
                 <ul>
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">ABOUT</a></li>
-                    <li><a href="login.html">EMPLOYEE</a></li>
-                    <li><a href="HRlogin.html">HR Login</a></li>
-                    <li><a href="#">CONTACT</a></li>
+                    <li>Home |</li>
+                    <li>About |</li>
+                    <li>Employee |</li>
+                    <li>HR Login  |</li>
+                    <li>Contact Us |</li>
                 </ul>
-            </div>
-
-            <div class="search">
-                <input class="srch" type="search" name="" placeholder="Type To text">
-                <button class="btn">Search</button>
-            </div>
-
-        </div> 
-        <div class="content">
-            <h1>SUN <br><span>TECHNOLOGIES</span></h1>
-            <p class="par">Welcome to SUN Auditing Company,
-                where precision and integrity are at the heart of our services.
-                With years of industry expertise, we specialize in providing comprehensive 
-                auditing solutions that ensure your business's financial health and compliance with regulatory standards.
-               Our team of certified professionals utilizes advanced methodologies and cutting-edge technology to deliver insightful
-               and reliable audit reports. At SUN Auditing, we are committed to fostering transparency and trust, empowering our
-                clients to make informed decisions with confidence. Partner with us to safeguard your financial integrity and achieve sustainable growth.</p>
-            <button class="cn"><a href="#">JOIN US</a></button>
-
-            <div class="form">
-                <h2>Login Here</h2>
-                <!-- <input type="ID" name="ID" placeholder="Enter ID Here">
-                <input type="password" name="" placeholder="Enter Password Here">-->
-                <button class="btnn"><a href="{{ url_for('login') }}">Login</a></button> 
-
-                <p class="link">Don't have an account<br>
-                <a href="employee signup.html">Sign up </a>here</p>
-                <p class="liw">Log in with</p>
-
-                <div class="icons">
-                    <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
-                    <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
-                    <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
-                    <a href="#"><ion-icon name="logo-google"></ion-icon></a>
-                    <a href="#"><ion-icon name="logo-skype"></ion-icon></a>
-                </div>
-
+            </nav>
+            <div>
+                <h4>Search For Information</h4>
             </div>
         </div>
+        <div class="searchbar">
+            <input placeholder="Search">
+        </div>
+        <h2>SUN</h2>
+        <h3>TECHNOLOGIES</h3>
+        <div class="two">
+        <h4>Welcome to SUN Auditing Company</h4>
+        </div>
+            <p>
+            where precision and integrity are at the heart of our services.
+            With years of industry expertise, we specialize in providing comprehensive. 
+            auditing solutions that ensure your business's financial health and compliance with regulatory standards.
+            Our team of certified professionals utilizes advanced methodologies and cutting-edge technology to deliver insightful.
+            and reliable audit reports. At SUN Auditing, we are committed to fostering transparency and trust, empowering our.
+            clients to make informed decisions with confidence. Partner with us to safeguard your financial integrity and achieve sustainable growth.
+    </p>
+    <center>
+    <div class="form">
+    <h2>Login Here</h2>
+    <input type="ID" name="ID" placeholder="Enter ID Here">
+    <input type="password" name="Password" placeholder="Enter Password Here"><br>
+    <button class="button">
+    <a href="userlogin">Login</a>
+    </button> 
+    <p class="link">Don't have an account<br>
+    <a href="signup">Sign up </a>here
+    </p>
+    </center>
+    <p>Log in with</p>
     </div>
-    
+        <div class="icons">
+        <h3>About Us</h3>
+        <h4 style="margin: 20px;">Contact Mail:suntechnologies@gmail.com</h4>
+        <h4 style="margin: 20px;">Contact No:9876543210</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, tempore. Magni, velit natus ipsam repudiandae maxime ipsa voluptates excepturi optio.</p>
+        <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-google"></ion-icon></a>
+        <a href="#"><ion-icon name="logo-skype"></ion-icon></a>
+    </div>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-</body>
+    </body>
+    </head>
 </html>
