@@ -13,6 +13,19 @@
                     <div class="card-header">
                         <h2>Payment Allocation</h2>
                     </div>
+                    <!-- Display Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
                     <div class="card-body">
                     <form method="post" action="">
                         <div class="form-group">
@@ -29,6 +42,12 @@
                                 <input type = "number" class = "form-control" id = "special_allowance" name = "special_allowance" required>
                                 <label for = "bonus">Bonus</label>
                                 <input type = "number" class = "form-control" id = "bonus" name = "bonus" >
+                                <h1>
+                                    Deductions
+                                </h1>
+
+                                
+
                             </li>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">submit</button>

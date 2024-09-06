@@ -254,12 +254,48 @@ def add_employee():
 
 
 
-
-
-@app.route("/add_detail",methods = ['GET','POST'])
+@app.route("/add_detail", methods=['GET', 'POST'])
 def add_detail():
-    
+    if request.method == 'POST':
+        employee_id = request.form['employee_id']
+        basic_pay = request.form['basic_pay']
+        house_allowance = request.form['house_allowance']
+        medical_allowance = request.form['medical_allowance']
+        special_allowance = request.form['special_allowance']
+        bonus = request.form['bonus']
+
+        try:
+            cursor = mysql.connection.cursor()
+
+            # Check if employee_id exists in the employees table
+            cursor.execute('SELECT * FROM add_employee WHERE employee_id = %s', (employee_id,))
+            employee = cursor.fetchone()  # Fetch the result
+
+            if not employee:
+                # Employee ID does not exist in employees table
+                flash('Employee ID does not exist. Please check the ID and try again.', 'danger')
+                return redirect(url_for('add_detail'))
+
+            # If employee_id exists, insert the details into payslip_details table
+
+            cursor.execute(
+                'INSERT INTO payslip_details (employee_id, basic_pay, house_allowance, medical_allowance, special_allowance, bonus) VALUES (%s, %s, %s, %s, %s, %s)',
+                (employee_id, basic_pay, house_allowance, medical_allowance, special_allowance, bonus)
+            )
+            mysql.connection.commit()
+            cursor.close()
+
+            # Flash a success message
+            flash('Details inserted successfully!', 'success')
+            return redirect(url_for('add_detail'))  # Redirect to the same page after inserting
+
+        except Exception as e:
+            # Flash an error message
+            flash(f"An error occurred: {e}", 'danger')
+            return redirect(url_for('add_detail'))
+
     return render_template('add_detail.html')
+
 
 
 
@@ -267,6 +303,34 @@ def add_detail():
 @app.route("/sample",methods = ['GET','POST'])
 def sample():
     return render_template('sample.html')
+
+
+
+@app.route("/display_payslip", methods=['GET', 'POST'])
+def display_payslip():
+    if request.method == 'POST':
+        employee_id = request.form['employee_id']
+        
+        try:
+            cursor = mysql.connection.cursor()
+            # Check if employee_id exists in the payslip_details table
+            cursor.execute('SELECT * FROM payslip_details WHERE employee_id = %s', (employee_id,))
+            payslip = cursor.fetchone()  # Fetch one result
+
+            if not payslip:
+                # Payslip not found for this employee_id
+                flash('Payslip not found for the entered Employee ID. Please check and try again.', 'danger')
+                return redirect(url_for('display_payslip'))
+
+            # If found, pass payslip data to the template
+            return render_template('display_payslip.html', payslip=payslip)
+
+        except Exception as e:
+            flash(f"An error occurred: {e}", 'danger')
+            return redirect(url_for('display_payslip'))
+
+    return render_template('display_payslip.html')
+
 
 
 if __name__ == '__main__':

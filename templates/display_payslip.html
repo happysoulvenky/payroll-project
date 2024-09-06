@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Payslip</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+        .table {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>View Employee Payslip</h1>
+
+    <!-- Display Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <!-- Form to Input Employee ID -->
+    <form method="POST" action="{{ url_for('display_payslip') }}">
+        <div class="form-group">
+            <input type="text" class="form-control" name="employee_id" placeholder="Enter Employee ID" required>
+        </div>
+        <button type="submit" class="btn btn-primary">View Payslip</button>
+    </form>
+
+    <!-- Display Payslip Details if Found -->
+    {% if payslip %}
+    <h2 class="mt-5">Employee Payslip Details</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Basic Pay</th>
+                <th>House Allowance</th>
+                <th>Medical Allowance</th>
+                <th>Special Allowance</th>
+                <th>Bonus</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ payslip[0] }}</td> <!-- Employee ID -->
+                <td>{{ payslip[1] }}</td> <!-- Basic Pay -->
+                <td>{{ payslip[2] }}</td> <!-- House Allowance -->
+                <td>{{ payslip[3] }}</td> <!-- Medical Allowance -->
+                <td>{{ payslip[4] }}</td> <!-- Special Allowance -->
+                <td>{{ payslip[5] }}</td> <!-- Bonus -->
+            </tr>
+        </tbody>
+    </table>
+    {% endif %}
+</div>
+
+<!-- Include Bootstrap JS for Alert -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
