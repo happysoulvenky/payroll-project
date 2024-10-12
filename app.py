@@ -297,9 +297,6 @@ def add_detail():
     return render_template('add_detail.html')
 
 
-
-
-
 @app.route("/sample",methods = ['GET','POST'])
 def sample():
     return render_template('sample.html')

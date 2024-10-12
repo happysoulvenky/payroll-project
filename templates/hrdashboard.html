@@ -35,16 +35,16 @@
             </tr>
         </thead>
         <tbody>
-            {% for employee in employees %}
+            {% for employee in add_employees %}
             <tr>
-                <td>{{ employee.id }}</td>
-                <td>{{ employee.name }}</td>
-                <td>{{ employee.employee_id }}</td>
-                <td>{{ employee.job_title }}</td>
-                <td>{{ employee.department }}</td>
-                <td>{{ employee.date_of_joining }}</td>
-                <td>{{ employee.email }}</td>
-                <td>{{ employee.phone }}</td>
+                <td>{{ employee[0] }}</td>
+                <td>{{ employee[1] }}</td>
+                <td>{{ employee[2] }}</td>
+                <td>{{ employee[3] }}</td>
+                <td>{{ employee[4] }}</td>
+                <td>{{ employee[5] }}</td>
+                <td>{{ employee[6] }}</td>
+                <td>{{ employee[7] }}</td>
             </tr>
             {% endfor %}
         </tbody>
